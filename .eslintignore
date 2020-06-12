@@ -1,0 +1,4 @@
+config/
+scripts/
+src/registerServiceWorker.js
+node_modules

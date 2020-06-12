@@ -1,0 +1,42 @@
+{
+	"editor.tabSize": 2,
+	"editor.insertSpaces": true,
+	"editor.detectIndentation": false,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true
+	},
+	"files.eol": "\n",
+	"javascript.validate.enable": false, // for optional-chaining syntax
+
+	"prettier.endOfLine": "lf",
+
+	"path-intellisense.showHiddenFiles": true,
+	"path-intellisense.autoSlashAfterDirectory": false,
+	"path-intellisense.absolutePathToWorkspace": true,
+	"path-intellisense.mappings": {
+		"containers": "${workspaceRoot}/src/containers",
+		"helpers": "${workspaceRoot}/src/helpers",
+		"views": "${workspaceRoot}/src/views",
+		"scss": "${workspaceRoot}/src/scss",
+		"assets": "${workspaceRoot}/src/assets",
+		"config": "${workspaceRoot}/src/config",
+
+		"@api": "${workspaceRoot}/styled/api",
+		"@helpers": "${workspaceRoot}/styled/helpers",
+		"@hooks": "${workspaceRoot}/styled/hooks",
+		"@services": "${workspaceRoot}/styled/services"
+	},
+
+	"[jsonc]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[json]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[html]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	}
+}

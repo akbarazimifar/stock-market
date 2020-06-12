@@ -1,0 +1,70 @@
+{
+	"plugins": ["react", "prettier", "babel"],
+	"parser": "babel-eslint",
+	"parserOptions": {
+		"ecmaVersion": 6,
+		"sourceType": "module",
+		"allowImportExportEverywhere": true,
+		"ecmaFeatures": {
+			"jsx": true
+		}
+	},
+	"env": {
+		"es6": true,
+		"browser": true,
+		"node": true,
+		"mocha": true
+	},
+	"extends": ["airbnb", "prettier"],
+	"rules": {
+		"semi": [2, "always"],
+		"object-curly-spacing": ["error", "always"],
+		"import/newline-after-import": ["error", { "count": 1 }],
+		"react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+		"react/forbid-prop-types": "off",
+		"no-extra-parens": "off",
+		"no-multi-spaces": "error",
+		"prettier/prettier": "warn",
+		"linebreak-style": "off",
+		"no-param-reassign": "off",
+		"camelcase": 2,
+		"no-underscore-dangle": "off",
+		"no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+		"prefer-destructuring": "off",
+		"no-inner-declarations": "off",
+		"no-use-before-define": "off",
+		"react/require-default-props": "off",
+		"react/destructuring-assignment": "off",
+		"no-console": "off",
+		"import/no-unresolved": "off",
+		"import/prefer-default-export": "off",
+		"no-useless-catch": "off",
+		"react/jsx-props-no-spreading": "off",
+		"jsx-a11y/control-has-associated-label": "off",
+		"react/jsx-curly-newline": "off",
+		"import/no-cycle": "off",
+		"prefer-promise-reject-errors": "off",
+		"react/no-array-index-key": "off",
+		"react/prop-types": "off",
+		"strict": "off",
+		"react/jsx-one-expression-per-line": "off",
+		"react/jsx-indent": "off",
+		"react/jsx-indent-props": "off",
+		"import/extensions": "off",
+		"no-unused-expressions": "off",
+		"no-debugger": "off",
+		"no-alert": "off",
+		"react/jsx-wrap-multilines": "off",
+		"no-nested-ternary": "off"
+	},
+	"settings": {
+		"react": {
+			"version": "16.8"
+		},
+		"import/resolver": {
+			"node": {
+				"paths": ["src"]
+			}
+		}
+	}
+}

@@ -1,0 +1,46 @@
+// Here you can add other styles
+
+body {
+	font-family: $font-family;
+	min-width: 320px;
+}
+
+*[dir='rtl'] .ml-auto,
+*[dir='rtl'] .mx-auto {
+	margin-left: 0 !important;
+}
+
+.fs-15 {
+	font-size: 15px;
+}
+
+.caret-up-down-icon {
+	font-size: 14px;
+	width: 10px;
+}
+
+.fix-number {
+	direction: ltr;
+	display: inline-block;
+}
+
+.tooltiper {
+	cursor: pointer;
+	border-bottom: 1px dashed silver;
+}
+
+.c-wrapper:not(.c-wrapper-fluid) .header-sticky {
+	position: fixed;
+	right: 0;
+	left: 0;
+	z-index: 1029;
+}
+
+.body-sticky {
+	margin-top: 50px;
+}
+
+.last-fetch-data-time {
+	font-size: 15px;
+	min-width: 100px;
+}

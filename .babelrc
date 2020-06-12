@@ -1,0 +1,27 @@
+{
+	"presets": ["react-app"],
+	"plugins": [
+		[
+			"module-resolver",
+			{
+				"root": ["./"],
+				"alias": {
+					"containers": "./src/containers",
+					"helpers": "./src/helpers",
+					"views": "./src/views",
+					"scss": "./src/scss",
+					"assets": "./src/assets",
+					"config": "./src/config",
+
+					"@api": "./shared/api",
+					"@helpers": "./shared/helpers",
+					"@hooks": "./shared/hooks",
+					"@services": "./shared/services"
+				}
+			}
+		],
+		"@babel/plugin-proposal-optional-chaining",
+		"@babel/plugin-transform-arrow-functions",
+		"@babel/plugin-transform-async-to-generator"
+	]
+}
