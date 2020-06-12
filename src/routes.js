@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Dashboard = React.lazy(() => import('./views/dashboard'));
+const Home = React.lazy(() => import('./views/home'));
 
-const routes = [{ path: '/', name: 'Dashboard', component: Dashboard }];
+const routes = [{ path: '/', name: 'home', component: Home }];
 
 export default routes;

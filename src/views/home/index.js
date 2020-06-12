@@ -18,9 +18,14 @@ const Dashboard = () => {
 		getInfo();
 	}, []);
 
-	const getInfo = async () => {
-		const data = await fetchInfo();
-		setInfoData(data);
+	const getInfo = () => {
+		fetchInfo().then(data => {
+			setInfoData(data);
+
+			setTimeout(() => {
+				getInfo();
+			}, 3000);
+		});
 	};
 
 	return (

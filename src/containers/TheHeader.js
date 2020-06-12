@@ -1,19 +1,18 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-	CHeader,
-	CToggler,
-	CHeaderBrand,
-	CHeaderNav,
-	CHeaderNavItem,
-	CBadge,
-} from '@coreui/react';
-import CIcon from '@coreui/icons-react';
+import { CHeader, CToggler, CSpinner, CBadge } from '@coreui/react';
 import { setShowSidebar } from '@services/app/actions';
+import moment from 'moment-jalaali';
+
+moment.loadPersian();
 
 const TheHeader = () => {
 	const dispatch = useDispatch();
-	const sidebarShow = useSelector(state => state.sidebarShow);
+
+	const sidebarShow = useSelector(state => state.app.sidebarShow);
+	const inRetry = useSelector(state => state.app.inRetry);
+	const retryText = useSelector(state => state.app.retryText);
+	const receiveDataTime = useSelector(state => state.app.receiveDataTime);
 
 	const toggleSidebar = () => {
 		const val = [true, 'responsive'].includes(sidebarShow)
@@ -30,7 +29,7 @@ const TheHeader = () => {
 	};
 
 	return (
-		<CHeader className='header-sticky'>
+		<CHeader>
 			<CToggler
 				inHeader
 				className='ml-md-3 d-lg-none'
@@ -42,25 +41,32 @@ const TheHeader = () => {
 				onClick={toggleSidebar}
 			/>
 
-			<CHeaderBrand className='mx-auto d-lg-none' to='/'>
-				<CIcon name='logo' height='48' alt='Logo' />
-			</CHeaderBrand>
+			<div className='px-3 justify-content-between header-wrapper'>
+				<div className='border-0 m-0 px-0 px-md-3'>
+					{inRetry && <CSpinner color='danger' size='sm' />}{' '}
+					<span className='text-danger mr-2'>{retryText}</span>
+				</div>
 
-			<CHeaderNav className='d-md-down-none mr-auto ml-4'>
-				<CHeaderNavItem className='px-3'>
-					آخرین زمان دریافت اطلاعات:{' '}
-					<strong className='fix-number'>
-						1399-03-22{' '}
-						<CBadge
-							color='primary'
-							shape='pill'
-							className='last-fetch-data-time'
-						>
-							22:10:18
-						</CBadge>
-					</strong>
-				</CHeaderNavItem>
-			</CHeaderNav>
+				<div className='d-md-down-none mfe-2'>
+					{receiveDataTime && (
+						<>
+							آخرین زمان دریافت اطلاعات:{' '}
+							<strong className='fix-number'>
+								<span className='rtl-text mr-2'>
+									{moment(receiveDataTime).format('jD jMMMM jYYYY')}
+								</span>
+								<CBadge
+									color='primary'
+									shape='pill'
+									className='last-fetch-data-time'
+								>
+									{moment(receiveDataTime).format('HH:mm:ss')}
+								</CBadge>
+							</strong>
+						</>
+					)}
+				</div>
+			</div>
 		</CHeader>
 	);
 };

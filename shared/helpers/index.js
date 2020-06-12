@@ -1,5 +1,6 @@
-export const isEmpty = obj =>
-	Object.keys(obj).length === 0 && obj.constructor === Object;
+export const delay = ms => {
+	return new Promise(res => setTimeout(res, ms));
+};
 
 export const truncate = (str, num = 5) => {
 	const arrStr = str.split(' ');
@@ -49,7 +50,7 @@ export const currency = (value, showUnit = true) => {
 	return value;
 };
 
-export const debounced = (delay, fn) => {
+export const debounced = (d, fn) => {
 	let timerId;
 	return (...args) => {
 		if (timerId) {
@@ -58,15 +59,15 @@ export const debounced = (delay, fn) => {
 		timerId = setTimeout(() => {
 			fn(...args);
 			timerId = null;
-		}, delay);
+		}, d);
 	};
 };
 
-export const throttled = (delay, fn) => {
+export const throttled = (d, fn) => {
 	let lastCall = 0;
 	return (...args) => {
 		const now = new Date().getTime();
-		if (now - lastCall < delay) {
+		if (now - lastCall < d) {
 			return null;
 		}
 		lastCall = now;
@@ -175,6 +176,118 @@ export const injectMessageData = (text, dataObj) => {
 	return text;
 };
 
-export const mustTwoDigits = value => {
-	return `0${value}`.slice(-2);
+export const twoDigit = number => {
+	return `0${number}`.slice(-2);
+};
+
+export const getUnique = (arr, key) => {
+	const unique = arr
+		.map(e => e[key])
+		// store the keys of the unique objects
+		.map((e, i, final) => final.indexOf(e) === i && i)
+		// eliminate the dead keys & store unique objects
+		.filter(e => arr[e])
+		.map(e => arr[e]);
+
+	return unique;
+};
+
+export const roundCurrency = value => {
+	let convert = 1;
+
+	if (value < 1000000) {
+		convert = 10000;
+	} else if (value < 10000000) {
+		convert = 100000;
+	} else if (value < 1000000000) {
+		convert = 1000000;
+	} else if (value < 100000000000) {
+		convert = 10000000;
+	} else {
+		return value;
+	}
+
+	return Math.round(value / convert) * convert;
+};
+
+export const digit = value => {
+	if (!value) {
+		return 0;
+	}
+
+	return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+};
+
+/* eslint-disable no-prototype-builtins, no-restricted-syntax */
+export const toQueryString = obj => {
+	const parts = [];
+	for (const i in obj) {
+		if (obj.hasOwnProperty(i)) {
+			const value = obj[i] ? encodeURIComponent(obj[i]) : '';
+			if (value) {
+				parts.push(`${i}=${value}`);
+			}
+		}
+	}
+	return parts.join('&');
+};
+/* eslint-enable no-prototype-builtins, no-restricted-syntax */
+
+export const removeDuplicates = arr => {
+	const result = [];
+	arr.forEach(item => {
+		if (result.indexOf(item) < 0) {
+			result.push(item);
+		}
+	});
+	return result;
+};
+
+export const fixTime = time => {
+	const first = parseInt(time.charAt(0), 10);
+
+	let hour = '00';
+	let minute = '00';
+	let second = '00';
+
+	if (first >= 8 && first <= 9) {
+		hour = this.twoDigit(first);
+		minute = time.substring(1, 3);
+		second = time.substring(3, 5);
+	} else {
+		hour = time.substring(0, 2);
+		minute = time.substring(2, 4);
+		second = time.substring(4, 6);
+	}
+
+	return `${hour}:${minute}:${second}`;
+};
+
+export const isString = value => {
+	return typeof value === 'string' || value instanceof String;
+};
+export const isNumber = value => {
+	return typeof value === 'number';
+};
+export const isArray = value => {
+	return value && typeof value === 'object' && value.constructor === Array;
+};
+export const isFunction = value => {
+	return typeof value === 'function';
+};
+export const isObject = value => {
+	return value && typeof value === 'object' && value.constructor === Object;
+};
+export const isNull = value => {
+	return value === null;
+};
+export const isUndefined = value => {
+	return typeof value === 'undefined';
+};
+export const isBoolean = value => {
+	return typeof value === 'boolean';
+};
+
+export const isEmpty = obj => {
+	return Object.keys(obj).length === 0 && obj.constructor === Object;
 };

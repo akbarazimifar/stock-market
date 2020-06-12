@@ -1,1 +1,3 @@
 export const SET_SHOW_SIDEBAR = 'SET_SHOW_SIDEBAR';
+export const SET_IN_RETRY = 'SET_IN_RETRY';
+export const SET_RECEIVE_DATA_TIME = 'SET_RECEIVE_DATA_TIME';

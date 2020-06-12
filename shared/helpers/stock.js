@@ -20,15 +20,14 @@ export const getInfoFromIndex = data => {
 
 		let totalIndexEqualWeightLabel = '';
 		if (lastResult) {
-			if (match[3] > lastResult.exchange.totalIndexEqualWeight.subValue)
+			if (match[5] > lastResult.exchange.totalIndexEqualWeight.subValue)
 				totalIndexEqualWeightLabel = 'up';
-			else if (match[3] < lastResult.exchange.totalIndexEqualWeight.subValue)
+			else if (match[5] < lastResult.exchange.totalIndexEqualWeight.subValue)
 				totalIndexEqualWeightLabel = 'down';
 		}
 
 		result.exchange = {
 			title: 'بازار نقدی بورس',
-			time: new Date(),
 			openStatus: {
 				title: 'وضعیت بازار',
 				label: match[1],

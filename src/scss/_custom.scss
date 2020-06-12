@@ -1,4 +1,7 @@
 // Here you can add other styles
+.c-app {
+	overflow-x: initial;
+}
 
 body {
 	font-family: $font-family;
@@ -24,20 +27,29 @@ body {
 	display: inline-block;
 }
 
+.rtl-text {
+	direction: rtl;
+	display: inline-block;
+}
+
 .tooltiper {
 	cursor: pointer;
 	border-bottom: 1px dashed silver;
 }
 
-.c-wrapper:not(.c-wrapper-fluid) .header-sticky {
-	position: fixed;
-	right: 0;
-	left: 0;
-	z-index: 1029;
-}
+.header-wrapper {
+	width: 90%;
+	font-size: 13px;
+	display: flex;
+	align-items: center;
 
-.body-sticky {
-	margin-top: 50px;
+	div:first-child {
+		float: right;
+	}
+
+	div:last-child {
+		float: left;
+	}
 }
 
 .last-fetch-data-time {
