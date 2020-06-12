@@ -287,7 +287,10 @@ export const isUndefined = value => {
 export const isBoolean = value => {
 	return typeof value === 'boolean';
 };
-
 export const isEmpty = obj => {
 	return Object.keys(obj).length === 0 && obj.constructor === Object;
+};
+
+export const arabicToPersian = text => {
+	return text.replace(/ي/g, 'ی').replace(/ك/g, 'ک');
 };

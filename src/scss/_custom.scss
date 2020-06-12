@@ -56,3 +56,16 @@ body {
 	font-size: 15px;
 	min-width: 100px;
 }
+
+.c-sidebar {
+	width: 200px;
+}
+
+*[dir='rtl']
+	.c-sidebar.c-sidebar-lg-show:not(.c-sidebar-right).c-sidebar-fixed
+	~ .c-wrapper,
+*[dir='rtl']
+	.c-sidebar.c-sidebar-show:not(.c-sidebar-right).c-sidebar-fixed
+	~ .c-wrapper {
+	margin-right: 200px;
+}
